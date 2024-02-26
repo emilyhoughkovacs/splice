@@ -33,19 +33,21 @@ Sessions where the landing page is `/home.html` convert at a slightly lower, tho
 # Methodology
 The question of conversion is a binary classification problem. Many models exist to approach such a problem, but I wanted to focus on those with the most amount of interpretability of the importance of each feature. For this problem, I used two models, a random forest classifier that handles categorical variables without prior encoding called CatBoostClassifier, and a simpler logistic regression that did require some preprocessing. My analysis was based on a synthesis of the results of these models as well as some further exploratory data analysis.
 
-    ## CatBoostClassifier
-    I ran this model two different ways. First, I didn’t encode any of the categorical variables in order to get feature importance of each factor, leading me to identify pageviews, country, and landing page as the top three contributors.
+<p style="text-indent: 25px;">
+## CatBoostClassifier
+I ran this model two different ways. First, I didn’t encode any of the categorical variables in order to get feature importance of each factor, leading me to identify pageviews, country, and landing page as the top three contributors.
 
-    Then, I re-ran this classifier after one-hot encoding each categorical variable. This allowed me to draw out that United States and `/home.html` were the most significant classes of the categorical variables that influence conversion.
+Then, I re-ran this classifier after one-hot encoding each categorical variable. This allowed me to draw out that United States and `/home.html` were the most significant classes of the categorical variables that influence conversion.
 
-    After identifying the top three important features and classes within those features, I used some simple statistical tests to determine how converting versus non-converting sessions varied across those three features. For the numerical category of pageviews, I ran a t-test to determine if the number of pageviews for converting versus non-converting sessions was statistically significant. For a test of proportions across the categorical variables of country (United States) and landing page (`/home.html`), I calculated the z-score. In all three cases, the differences between the converting and non-converting class of sessions were statistically significant.
+After identifying the top three important features and classes within those features, I used some simple statistical tests to determine how converting versus non-converting sessions varied across those three features. For the numerical category of pageviews, I ran a t-test to determine if the number of pageviews for converting versus non-converting sessions was statistically significant. For a test of proportions across the categorical variables of country (United States) and landing page (`/home.html`), I calculated the z-score. In all three cases, the differences between the converting and non-converting class of sessions were statistically significant.
 
-    ## Logistic Regression
-    For a logistic regression, I had to preprocess the data a bit more. In addition to one-hot encoding categorical values, I had to normalize the numerical data. Normalizing the numerical values puts it on a scale from zero to one, so the magnitude of the value does not cause the feature to have outsize importance to the categorical features.
+## Logistic Regression
+For a logistic regression, I had to preprocess the data a bit more. In addition to one-hot encoding categorical values, I had to normalize the numerical data. Normalizing the numerical values puts it on a scale from zero to one, so the magnitude of the value does not cause the feature to have outsize importance to the categorical features.
 
-    Then, I scaled the data so each feature was normally distributed with a mean of 0 and standard deviation of 1. This is to ensure the model works properly and is able to converge.
+Then, I scaled the data so each feature was normally distributed with a mean of 0 and standard deviation of 1. This is to ensure the model works properly and is able to converge.
 
-    Finally, I trained the logistic regression model and evaluated the feature importances using built-in functions. 
+Finally, I trained the logistic regression model and evaluated the feature importances using built-in functions. 
+</p>
 
 # Conclusion
 Ultimately, **the three factors identified each provide unique perspectives to understanding of our audience and how they convert.**
