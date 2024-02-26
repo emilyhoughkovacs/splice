@@ -12,7 +12,7 @@ GROUP BY 1
 ORDER BY 2 desc
 ```
 
-The above results indicate that the vast majority of the time (98.9%), the isEntrance hit event is indeed always the first hit of the session. This led me to investigate the outliers where this was not the case. In the following query, I find the visitIds corresponding to when the isEntrance event is hitNumber 3 or 4.
+The above results indicate that the vast majority of the time (98.9%), the `isEntrance` hit event is indeed always the first hit of the session. This led me to investigate the outliers where this was not the case. In the following query, I find the `visitId`s corresponding to when the `isEntrance` event is `hitNumber` 3 or 4.
 
 ```
 -- results in visitIds 1501614812 and 1501570398
@@ -23,7 +23,7 @@ FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`, UNNEST
 WHERE h.isEntrance = true and h.hitNumber > 2
 ```
 
-By hardcoding the resulting visitIds, I was able to investigate further and examine what the hit sequence looked like for those anomolies where the `isEntrance` event was not occuring on `hitNumber` = 1.
+By hardcoding the resulting `visitId`s, I was able to investigate further and examine what the hit sequence looked like for those anomolies where the `isEntrance` event was not occuring on `hitNumber` = 1.
 
 ```
 SELECT 
