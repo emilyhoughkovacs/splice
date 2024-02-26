@@ -21,7 +21,7 @@ FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`, UNNEST
 
 result: 13,233
 
-   b. gutcheck: 2,556 rows, each row within a table corresponds to a unique session in Analytics 360, hence 2,556 sessions. assuming the data is clean, there should be no duplicates as the provided documentation states "Each row within a table corresponds to a session in Analytics 360." However, let's double check by counting distinct fullVisitorId-visitID pairs:
+   b. gutcheck: 2,556 rows, each row within a table corresponds to a unique session in Analytics 360, hence 2,556 sessions. assuming the data is clean, there should be no duplicates as the provided documentation states "Each row within a table corresponds to a session in Analytics 360." However, let's double check by counting distinct `fullVisitorId`-`visitID` pairs:
 
 ```
 -- get number of unique sessions by using COUNT(distinct)
