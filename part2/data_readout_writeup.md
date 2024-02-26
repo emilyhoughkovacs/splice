@@ -34,6 +34,7 @@ Sessions where the landing page is `/home.html` convert at a slightly lower, tho
 The question of conversion is a binary classification problem. Many models exist to approach such a problem, but I wanted to focus on those with the most amount of interpretability of the importance of each feature. For this problem, I used two models, a random forest classifier that handles categorical variables without prior encoding called CatBoostClassifier, and a simpler logistic regression that did require some preprocessing. My analysis was based on a synthesis of the results of these models as well as some further exploratory data analysis.
 
 <p style="text-indent: 25px;">
+  
 ## CatBoostClassifier
 I ran this model two different ways. First, I didn’t encode any of the categorical variables in order to get feature importance of each factor, leading me to identify pageviews, country, and landing page as the top three contributors.
 
